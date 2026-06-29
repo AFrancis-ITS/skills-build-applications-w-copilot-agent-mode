@@ -1,0 +1,15 @@
+.app-shell {
+  min-height: 100vh;
+}
+
+.app-nav .nav-link {
+  color: #234;
+  border: 1px solid #cfd8e3;
+  background: #f3f7fb;
+}
+
+.app-nav .nav-link.active {
+  color: #fff;
+  border-color: #0d6efd;
+  background: #0d6efd;
+}

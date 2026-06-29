@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react'
 import { fetchCollection } from './api'
 
-function Teams({ apiBaseUrl }) {
+function Teams() {
   const [items, setItems] = useState([])
   const [count, setCount] = useState(0)
   const [status, setStatus] = useState('loading')
   const [error, setError] = useState('')
 
+  const endpoint = import.meta.env.VITE_CODESPACE_NAME
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/teams/`
+    : 'http://localhost:8000/api/teams/'
+
   useEffect(() => {
     let active = true
 
-    fetchCollection(`${apiBaseUrl}/teams/`)
+    fetchCollection(endpoint)
       .then((result) => {
         if (!active) return
         setItems(result.items)
@@ -26,7 +30,7 @@ function Teams({ apiBaseUrl }) {
     return () => {
       active = false
     }
-  }, [apiBaseUrl])
+  }, [endpoint])
 
   return (
     <section>

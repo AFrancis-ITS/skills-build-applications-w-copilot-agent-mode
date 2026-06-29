@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react'
 import { fetchCollection } from './api'
 
-function Workouts({ apiBaseUrl }) {
+function Workouts() {
   const [items, setItems] = useState([])
   const [count, setCount] = useState(0)
   const [status, setStatus] = useState('loading')
   const [error, setError] = useState('')
 
+  const endpoint = import.meta.env.VITE_CODESPACE_NAME
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts/`
+    : 'http://localhost:8000/api/workouts/'
+
   useEffect(() => {
     let active = true
 
-    fetchCollection(`${apiBaseUrl}/workouts/`)
+    fetchCollection(endpoint)
       .then((result) => {
         if (!active) return
         setItems(result.items)
@@ -26,7 +30,7 @@ function Workouts({ apiBaseUrl }) {
     return () => {
       active = false
     }
-  }, [apiBaseUrl])
+  }, [endpoint])
 
   return (
     <section>

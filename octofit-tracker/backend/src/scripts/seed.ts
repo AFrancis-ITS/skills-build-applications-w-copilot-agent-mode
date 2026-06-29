@@ -1,5 +1,5 @@
 import ActivityModel from '../models/Activity';
-import { connectDatabase, disconnectDatabase } from '../database';
+import { connectDatabase, disconnectDatabase } from '../config/database';
 import LeaderboardModel from '../models/Leaderboard';
 import TeamModel from '../models/Team';
 import UserModel from '../models/User';

@@ -1,6 +1,6 @@
 import express from 'express';
+import { connectDatabase, MONGODB_URI } from './config/database';
 import activitiesRouter from './routes/activities';
-import { connectDatabase, MONGODB_URI } from './database';
 import leaderboardRouter from './routes/leaderboard';
 import teamsRouter from './routes/teams';
 import usersRouter from './routes/users';
